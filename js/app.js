@@ -1,7 +1,5 @@
-﻿/* ============================================================
-   JUST HEMANG — Portfolio Runtime
-   three.js 3D logo · gsap everything · cursor · menu
-   ============================================================ */
+
+
 'use strict';
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -12,9 +10,6 @@ const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 const IS_HOME = !document.body.classList.contains('page-sub');
 
-/* ============================================================
-   THREE.JS — 3D Logo (home only)
-   ============================================================ */
 function initHero() {
   if (!IS_HOME) return;
   const canvas = $('#heroCanvas');
@@ -91,9 +86,6 @@ function initHero() {
   animate();
 }
 
-/* ============================================================
-   CUSTOM CURSOR
-   ============================================================ */
 function initCursor() {
   if (!FINE_POINTER || REDUCED) return;
   document.body.classList.add('has-cursor');
@@ -115,9 +107,6 @@ function initCursor() {
   }
 }
 
-/* ============================================================
-   FLOATING MENU
-   ============================================================ */
 function initMenu() {
   const fab = $('#menuBtn') || $('#menuFab');
   const overlay = $('#menuOverlay');
@@ -142,9 +131,6 @@ function initMenu() {
   });
 }
 
-/* ============================================================
-   SCROLL PROGRESS
-   ============================================================ */
 function initScrollProgress() {
   const progress = $('#scrollProgress');
   if (!progress) return;
@@ -154,9 +140,6 @@ function initScrollProgress() {
   }, { passive: true });
 }
 
-/* ============================================================
-   TEXT SPLIT
-   ============================================================ */
 function splitText(el) {
   const ariaText = el.textContent;
   el.setAttribute('aria-label', ariaText);
@@ -180,9 +163,6 @@ function splitText(el) {
   return result;
 }
 
-/* ============================================================
-   COUNTER ANIMATION
-   ============================================================ */
 function initCounters() {
   if (REDUCED || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   $$('.stat__num').forEach((el) => {
@@ -202,9 +182,6 @@ function initCounters() {
   });
 }
 
-/* ============================================================
-   HORIZONTAL SCROLL SECTIONS
-   ============================================================ */
 function initHorizontalScroll() {
   if (REDUCED || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
@@ -240,9 +217,6 @@ function initHorizontalScroll() {
   });
 }
 
-/* ============================================================
-   GSAP ANIMATIONS
-   ============================================================ */
 function initAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
@@ -257,7 +231,6 @@ function initAnimations() {
     return;
   }
 
-  /* hero entrance */
   if (IS_HOME) {
     const tl = gsap.timeline({ delay: 0.3 });
     tl.from('.hero__pre', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' })
@@ -270,7 +243,6 @@ function initAnimations() {
     gsap.from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)', delay: 0.2 });
   }
 
-  /* text split */
   $$('.text-split').forEach((el) => {
     const chars = splitText(el);
     gsap.from(chars, {
@@ -280,7 +252,6 @@ function initAnimations() {
     });
   });
 
-  /* accent lines */
   $$('.accent-line').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 90%' },
@@ -288,7 +259,6 @@ function initAnimations() {
     });
   });
 
-  /* clip-path wipe */
   $$('.anim-clip').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -296,7 +266,6 @@ function initAnimations() {
     });
   });
 
-  /* scale reveals */
   $$('.anim-scale').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -304,7 +273,6 @@ function initAnimations() {
     });
   });
 
-  /* slide from left */
   $$('.anim-slide-left').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -312,7 +280,6 @@ function initAnimations() {
     });
   });
 
-  /* slide from right */
   $$('.anim-slide-right').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -320,7 +287,6 @@ function initAnimations() {
     });
   });
 
-  /* slide up */
   $$('.anim-slide-up').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -328,7 +294,6 @@ function initAnimations() {
     });
   });
 
-  /* rotate in */
   $$('.anim-rotate').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -336,7 +301,6 @@ function initAnimations() {
     });
   });
 
-  /* blur reveal */
   $$('.anim-blur').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -344,7 +308,6 @@ function initAnimations() {
     });
   });
 
-  /* work items */
   $$('.work__item').forEach((item, i) => {
     gsap.from(item, {
       scrollTrigger: { trigger: item, start: 'top 88%' },
@@ -353,7 +316,6 @@ function initAnimations() {
     });
   });
 
-  /* service items */
   $$('.service-item').forEach((item, i) => {
     gsap.from(item, {
       scrollTrigger: { trigger: item, start: 'top 88%' },
@@ -362,7 +324,6 @@ function initAnimations() {
     });
   });
 
-  /* pricing cards */
   $$('.pricing__card').forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: { trigger: card, start: 'top 88%' },
@@ -371,7 +332,6 @@ function initAnimations() {
     });
   });
 
-  /* process steps */
   $$('.process__step').forEach((step, i) => {
     gsap.from(step, {
       scrollTrigger: { trigger: step, start: 'top 88%' },
@@ -380,7 +340,6 @@ function initAnimations() {
     });
   });
 
-  /* capabilities */
   $$('.capability').forEach((card, i) => {
     gsap.from(card, {
       scrollTrigger: { trigger: card, start: 'top 88%' },
@@ -389,7 +348,6 @@ function initAnimations() {
     });
   });
 
-  /* stats */
   $$('.stat').forEach((stat, i) => {
     gsap.from(stat, {
       scrollTrigger: { trigger: stat, start: 'top 88%' },
@@ -398,7 +356,6 @@ function initAnimations() {
     });
   });
 
-  /* contact links */
   $$('.contact-links__item').forEach((item) => {
     gsap.from(item, {
       scrollTrigger: { trigger: item, start: 'top 88%' },
@@ -407,7 +364,6 @@ function initAnimations() {
     });
   });
 
-  /* team groups */
   $$('.team__group').forEach((group, i) => {
     gsap.from(group, {
       scrollTrigger: { trigger: group, start: 'top 85%' },
@@ -416,7 +372,6 @@ function initAnimations() {
     });
   });
 
-  /* CTA heading */
   $$('.cta__heading, .page-cta h2').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 85%' },
@@ -425,7 +380,6 @@ function initAnimations() {
     });
   });
 
-  /* CTA buttons */
   $$('.cta__btn').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 90%' },
@@ -434,7 +388,6 @@ function initAnimations() {
     });
   });
 
-  /* section eyebrows */
   $$('.section__eyebrow').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 90%' },
@@ -442,7 +395,6 @@ function initAnimations() {
     });
   });
 
-  /* section headings */
   $$('.section__heading').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -450,7 +402,6 @@ function initAnimations() {
     });
   });
 
-  /* statement text */
   $$('.statement__text').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 85%' },
@@ -458,7 +409,6 @@ function initAnimations() {
     });
   });
 
-  /* footer logo */
   const footerLogo = $('.footer__logo');
   if (footerLogo) {
     gsap.from(footerLogo, {
@@ -468,7 +418,6 @@ function initAnimations() {
     });
   }
 
-  /* footer links */
   const footerLinks = $$('.footer__links a');
   if (footerLinks.length) {
     gsap.from(footerLinks, {
@@ -477,7 +426,6 @@ function initAnimations() {
     });
   }
 
-  /* parallax on sections */
   $$('.section').forEach((el) => {
     gsap.to(el, {
       scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: 1.5 },
@@ -485,7 +433,6 @@ function initAnimations() {
     });
   });
 
-  /* marquee */
   const marquee = $('.marquee');
   if (marquee) {
     gsap.from(marquee, {
@@ -494,7 +441,6 @@ function initAnimations() {
     });
   }
 
-  /* work numbers */
   $$('.work__num').forEach((el) => {
     gsap.from(el, {
       scrollTrigger: { trigger: el, start: 'top 88%' },
@@ -502,7 +448,6 @@ function initAnimations() {
     });
   });
 
-  /* reel */
   const reel = $('.reel__wrap');
   if (reel) {
     gsap.from(reel, {
@@ -512,7 +457,6 @@ function initAnimations() {
     });
   }
 
-  /* aero-window panels */
   $$('.aero-window').forEach((win, i) => {
     gsap.from(win, {
       scrollTrigger: { trigger: win, start: 'top 88%' },
@@ -521,7 +465,6 @@ function initAnimations() {
     });
   });
 
-  /* scroll progress glow */
   const progress = $('#scrollProgress');
   if (progress) {
     ScrollTrigger.create({
@@ -535,9 +478,6 @@ function initAnimations() {
   }
 }
 
-/* ============================================================
-   MAGNETIC BUTTONS
-   ============================================================ */
 function initMagnetic() {
   if (!FINE_POINTER || REDUCED) return;
   $$('.cta__btn, .nav__menu-btn').forEach((el) => {
@@ -558,9 +498,6 @@ function initMagnetic() {
   });
 }
 
-/* ============================================================
-   HOVER TILT
-   ============================================================ */
 function initHoverTilt() {
   if (!FINE_POINTER || REDUCED) return;
   $$('.work__item, .service-item, .pricing__card').forEach((el) => {
@@ -576,9 +513,6 @@ function initHoverTilt() {
   });
 }
 
-/* ============================================================
-   HERO CHAR MAGNETIC
-   ============================================================ */
 function initHeroChars() {
   if (!FINE_POINTER || REDUCED || !IS_HOME) return;
   const chars = $$('.hero__char');
@@ -604,9 +538,6 @@ function initHeroChars() {
   });
 }
 
-/* ============================================================
-   MARQUEE
-   ============================================================ */
 function initMarquee() {
   const track = $('#marqueeTrack');
   if (!track || REDUCED) return;
@@ -623,9 +554,6 @@ function initMarquee() {
   })();
 }
 
-/* ============================================================
-   PAGE TRANSITIONS
-   ============================================================ */
 function initPageTransition() {
   const overlay = $('#pageTransition');
   if (!overlay) return;
@@ -665,9 +593,6 @@ function initPageTransition() {
   });
 }
 
-/* ============================================================
-   TOOLKIT — Skills showcase animations
-   ============================================================ */
 function initToolkit() {
   if (REDUCED || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   $$('.toolkit__card').forEach((card, i) => {
@@ -679,9 +604,6 @@ function initToolkit() {
   });
 }
 
-/* ============================================================
-   TIMECODE
-   ============================================================ */
 function initTimecode() {
   const el = $('#timecodeValue');
   if (!el) return;
@@ -699,9 +621,6 @@ function initTimecode() {
   })();
 }
 
-/* ============================================================
-   FILM STRIP SCROLL
-   ============================================================ */
 function initFilmstrip() {
   if (REDUCED) return;
   const track = $('#filmstripTrack');
@@ -710,9 +629,6 @@ function initFilmstrip() {
   track.innerHTML += clone;
 }
 
-/* ============================================================
-   INIT
-   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   initHero();
   initCursor();
@@ -730,3 +646,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initTimecode();
   initFilmstrip();
 });
+
