@@ -99,7 +99,7 @@ body.has-cursor .cursor{display:block}
 .hero__title{display:flex;flex-direction:column;align-items:center}
 .hero__line{width:fit-content}
 .hero__line--top{font-family:var(--font-hero);font-size:clamp(2rem,7vw,6rem);font-weight:400;line-height:1;letter-spacing:.15em;color:var(--paper)}
-.hero__line--big{font-family:var(--font-hero);font-size:clamp(4rem,16vw,18rem);font-weight:400;line-height:.85;letter-spacing:.02em;color:var(--paper);display:flex;gap:0;cursor:default;text-shadow:0 2px 40px rgba(42,122,122,.15),0 0 80px rgba(42,122,122,.08);-webkit-text-stroke:3px var(--paper)}
+.hero__line--big{font-family:var(--font-hero);font-size:clamp(4rem,20vw,22rem);font-weight:400;line-height:.85;letter-spacing:.02em;color:var(--paper);display:flex;gap:0;cursor:default;text-shadow:0 2px 40px rgba(42,122,122,.15),0 0 80px rgba(42,122,122,.08);-webkit-text-stroke:3px var(--paper)}
 .hero__char{display:inline-block;transition:color .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1);will-change:transform}
 .hero__char:hover{color:var(--teal-light);transform:scale(1.08) translateY(-4px)}
 .hero__tagline{font-family:var(--font-mono);font-size:clamp(.6rem,1.3vw,.78rem);font-weight:500;letter-spacing:.08em;color:var(--paper-2);margin-top:2rem;text-align:center}
@@ -377,7 +377,7 @@ body.page-sub .toolkit{max-width:100%;padding-left:var(--pad);padding-right:var(
   .toolkit__grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
   .services-grid{grid-template-columns:1fr}
   .testimonials__grid{grid-template-columns:1fr}
-  .hero__line--big{font-size:clamp(3rem,14vw,10rem)}
+  .hero__line--big{font-size:clamp(3rem,18vw,12rem)}
   .page-hero__title{font-size:clamp(2.5rem,10vw,6rem)}
   .contact-hero__title{font-size:clamp(2.5rem,12vw,8rem)}
   .cta__heading{font-size:clamp(2rem,8vw,5rem)}
@@ -387,7 +387,7 @@ body.page-sub .toolkit{max-width:100%;padding-left:var(--pad);padding-right:var(
 }
 @media(max-width:560px){
   :root{--pad:1rem;--section-gap:clamp(3rem,8vh,5rem)}
-  .hero__line--big{font-size:clamp(2.5rem,16vw,5rem);gap:0}
+  .hero__line--big{font-size:clamp(3rem,20vw,6rem);gap:0}
   .hero__line--top{font-size:clamp(1.2rem,5vw,2.5rem)}
   .hero__pre{font-size:.5rem;letter-spacing:.15em}
   .hero__tagline{font-size:.55rem}
@@ -444,7 +444,7 @@ body.page-sub .toolkit{max-width:100%;padding-left:var(--pad);padding-right:var(
 @media(max-width:380px){
   :root{--pad:.75rem}
   .capabilities__grid{grid-template-columns:1fr}
-  .hero__line--big{font-size:clamp(2rem,18vw,3.5rem)}
+  .hero__line--big{font-size:clamp(2.5rem,22vw,4.5rem)}
   .page-hero__title{font-size:clamp(1.8rem,14vw,3rem)}
   .contact-hero__title{font-size:clamp(1.8rem,16vw,3.5rem)}
 }
