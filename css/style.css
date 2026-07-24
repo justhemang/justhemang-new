@@ -2,12 +2,12 @@
    JUST HEMANG — Portfolio
    ============================================================ */
 :root {
-  --ink: #1a1a1a;
-  --ink-2: #2a2a2a;
-  --ink-3: #444;
-  --paper: #f0ebe3;
-  --paper-2: #e0d8cc;
-  --paper-3: #c8c0b4;
+  --ink: #0b0b09;
+  --ink-2: #1a1a1a;
+  --ink-3: #333;
+  --paper: #f5f0e8;
+  --paper-2: #e8e0d4;
+  --paper-3: #d4ccc0;
   --accent: #c4652a;
   --accent-dim: rgba(196,101,42,0.15);
   --teal: #2a7a7a;

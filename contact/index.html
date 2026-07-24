@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — Just Hemang</title>
   <meta name="description" content="Get in touch with Just Hemang." />
-  <meta name="theme-color" content="#1a1a1a" />
+  <meta name="theme-color" content="#0b0b09" />
   <link rel="icon" href="../Logo Transparent.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,7 +56,7 @@
 
     <section class="contact-form" id="contactForm">
       <h2 class="section__heading text-split">Send a Message</h2>
-      <form onsubmit="return false;">
+      <form onsubmit="var n=document.getElementById('name').value;var e=document.getElementById('email').value;var p=document.getElementById('project').value;var body='Name: '+n+'%0D%0AEmail: '+e+'%0D%0A%0D%0A'+encodeURIComponent(p);window.location.href='mailto:justhemang@gmail.com?subject=Project Inquiry from '+encodeURIComponent(n)+'&body='+body;return false;">
         <div class="contact-form__field"><label class="contact-form__label" for="name">Name</label><input class="contact-form__input" type="text" id="name" name="name" placeholder="Your name" autocomplete="name" /></div>
         <div class="contact-form__field"><label class="contact-form__label" for="email">Email</label><input class="contact-form__input" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" /></div>
         <div class="contact-form__field"><label class="contact-form__label" for="project">Project Details</label><textarea class="contact-form__textarea" id="project" name="project" placeholder="Tell me about your project..."></textarea></div>
