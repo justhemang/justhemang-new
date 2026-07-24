@@ -233,7 +233,8 @@ function initAnimations() {
 
   if (IS_HOME) {
     const tl = gsap.timeline({ delay: 0.3 });
-    tl.from('.hero__pre', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' })
+    tl.from('.hero__typewriter', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' })
+      .from('.hero__pre', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' }, '-=0.4')
       .from('.hero__line--top', { opacity: 0, x: -80, skewX: -8, duration: 0.9, ease: 'power4.out' }, '-=0.4')
       .from('.hero__char', { opacity: 0, y: 80, stagger: 0.06, duration: 0.9, ease: 'back.out(1.4)' }, '-=0.5')
       .from('#hero .accent-line', { scaleX: 0, duration: 0.8, ease: 'power3.inOut' }, '-=0.4')
@@ -629,6 +630,67 @@ function initFilmstrip() {
   track.innerHTML += clone;
 }
 
+function initTypewriter() {
+  const el = $('#heroTypewriter');
+  if (!el || !IS_HOME) return;
+  const phrases = [
+    'Freelance Video Editor',
+    'Frontend Developer',
+    'President of OPCODE',
+    'Founder of Kaelor Media',
+    'Creative Director',
+    'Motion Graphics Artist',
+    'Color Grading Specialist',
+  ];
+  let pi = 0, ci = 0, deleting = false, delay = 80;
+  el.innerHTML = '<span class="tw-cursor"></span>';
+  const cursor = el.querySelector('.tw-cursor');
+  function tick() {
+    const current = phrases[pi];
+    if (!deleting) {
+      ci++;
+      if (ci > current.length) { deleting = true; delay = 1800; }
+    } else {
+      ci--;
+      if (ci < 0) { ci = 0; deleting = false; pi = (pi + 1) % phrases.length; delay = 200; }
+    }
+    el.textContent = current.substring(0, ci);
+    el.appendChild(cursor);
+    setTimeout(tick, deleting ? 35 : delay);
+  }
+  setTimeout(tick, 1200);
+}
+
+function initTechChars() {
+  const container = $('#techChars');
+  if (!container) return;
+  const chars = ['{0,1}', '</>', '0xFF', '>>>', '&&', '===', 'npm', 'git', '{}', '[]', '=>', '##', '@@', '**', '++', '--', '&&', '||', '!'];
+  for (let i = 0; i < 18; i++) {
+    const span = document.createElement('span');
+    span.className = 'tech-char';
+    span.textContent = chars[Math.floor(Math.random() * chars.length)];
+    span.style.left = Math.random() * 100 + '%';
+    span.style.animationDuration = (6 + Math.random() * 10) + 's';
+    span.style.animationDelay = (Math.random() * 12) + 's';
+    span.style.fontSize = (.5 + Math.random() * .5) + 'rem';
+    container.appendChild(span);
+  }
+}
+
+function initLiveClock() {
+  const el = $('#liveClock');
+  if (!el) return;
+  function update() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2, '0');
+    const m = String(now.getMinutes()).padStart(2, '0');
+    const s = String(now.getSeconds()).padStart(2, '0');
+    el.textContent = h + ':' + m + ':' + s;
+  }
+  update();
+  setInterval(update, 1000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initHero();
   initCursor();
@@ -645,5 +707,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initToolkit();
   initTimecode();
   initFilmstrip();
+  initTypewriter();
+  initTechChars();
+  initLiveClock();
 });
 
