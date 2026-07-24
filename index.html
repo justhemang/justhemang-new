@@ -84,7 +84,10 @@
 
     <!-- ========== HERO ========== -->
     <section class="hero" id="hero">
+      <div class="hero__letterbox hero__letterbox--top" aria-hidden="true"></div>
       <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__rec mono" aria-hidden="true">REC</div>
+      <div class="hero__fps mono" aria-hidden="true">24fps / 4K</div>
       <div class="hero__content">
         <p class="hero__pre mono">Video Editor &middot; Graphic Designer &middot; Frontend Dev</p>
         <h1 class="hero__title" aria-label="Just Hemang">
@@ -96,11 +99,40 @@
         </h1>
         <div class="accent-line" data-anim="accent-line"></div>
         <p class="hero__tagline mono">I don't just push pixels — I slam them into place.</p>
+        <div class="waveform" aria-hidden="true">
+          <div class="waveform__bar"></div><div class="waveform__bar"></div><div class="waveform__bar"></div>
+          <div class="waveform__bar"></div><div class="waveform__bar"></div><div class="waveform__bar"></div>
+          <div class="waveform__bar"></div><div class="waveform__bar"></div><div class="waveform__bar"></div>
+          <div class="waveform__bar"></div><div class="waveform__bar"></div><div class="waveform__bar"></div>
+          <div class="waveform__bar"></div><div class="waveform__bar"></div><div class="waveform__bar"></div>
+          <div class="waveform__bar"></div><div class="waveform__bar"></div><div class="waveform__bar"></div>
+          <div class="waveform__bar"></div><div class="waveform__bar"></div>
+        </div>
       </div>
+      <div class="hero__letterbox hero__letterbox--bottom" aria-hidden="true"></div>
     </section>
+
+    <!-- ========== FILM STRIP ========== -->
+    <div class="filmstrip" aria-hidden="true">
+      <div class="filmstrip__track" id="filmstripTrack">
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+      </div>
+    </div>
 
     <!-- ========== STATEMENT ========== -->
     <section class="section" id="statement">
+      <div class="clap-divider" aria-hidden="true">
+        <div class="clap-divider__bar"></div>
+        <span class="clap-divider__icon">SCENE 01 / TAKE 01</span>
+        <div class="clap-divider__bar"></div>
+      </div>
       <div class="statement">
         <p class="section__eyebrow mono anim-slide-left">About</p>
         <h2 class="statement__heading text-split">THE CRAFT<br />BEHIND<br />THE WORK</h2>
@@ -114,6 +146,11 @@
 
     <!-- ========== WORK ========== -->
     <section class="section work" id="work">
+      <div class="clap-divider" aria-hidden="true">
+        <div class="clap-divider__bar"></div>
+        <span class="clap-divider__icon">SELECTED CUTS</span>
+        <div class="clap-divider__bar"></div>
+      </div>
       <p class="section__eyebrow mono anim-slide-left">Selected work</p>
       <h2 class="section__heading text-split">Projects</h2>
       <div class="work__grid">
@@ -123,6 +160,7 @@
             <h3 class="work__client">Brand Film — Echoscope</h3>
             <p class="work__desc mono">Cinematic product launch video with kinetic typography and color grading.</p>
           </div>
+          <div class="work__play" aria-hidden="true"></div>
         </article>
         <article class="work__item">
           <span class="work__num mono">02</span>
@@ -130,6 +168,7 @@
             <h3 class="work__client">Visual Identity — Noir Studio</h3>
             <p class="work__desc mono">Complete brand system: logo, typography, packaging, and digital presence.</p>
           </div>
+          <div class="work__play" aria-hidden="true"></div>
         </article>
         <article class="work__item">
           <span class="work__num mono">03</span>
@@ -137,6 +176,7 @@
             <h3 class="work__client">Web Platform — Milano IoT</h3>
             <p class="work__desc mono">Full-stack dashboard for real-time monitoring of commercial coffee machines.</p>
           </div>
+          <div class="work__play" aria-hidden="true"></div>
         </article>
         <article class="work__item">
           <span class="work__num mono">04</span>
@@ -144,12 +184,32 @@
             <h3 class="work__client">Social Campaign — Freelance Reel</h3>
             <p class="work__desc mono">Motion graphics and video editing for multi-platform content strategy.</p>
           </div>
+          <div class="work__play" aria-hidden="true"></div>
         </article>
       </div>
     </section>
 
+    <!-- ========== FILM STRIP 2 ========== -->
+    <div class="filmstrip" aria-hidden="true">
+      <div class="filmstrip__track">
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+        <div class="filmstrip__hole"></div><div class="filmstrip__hole"></div><div class="filmstrip__hole"></div>
+      </div>
+    </div>
+
     <!-- ========== STUDIO ========== -->
     <section class="section" id="studio">
+      <div class="clap-divider" aria-hidden="true">
+        <div class="clap-divider__bar"></div>
+        <span class="clap-divider__icon">DIRECTOR'S CUT</span>
+        <div class="clap-divider__bar"></div>
+      </div>
       <p class="section__eyebrow mono anim-slide-left">Studio</p>
       <h2 class="section__heading text-split">Philosophy</h2>
       <div class="studio">
@@ -189,9 +249,8 @@
     <!-- ========== MARQUEE ========== -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track" id="marqueeTrack">
-        <span>FRONTEND DEVELOPER <span class="mark">&times;</span> VIDEO EDITOR <span class="mark">&times;</span>
-          GRAPHIC DESIGNER <span class="mark">&times;</span> MOTION GRAPHICS <span class="mark">&times;</span> COLOR
-          GRADING <span class="mark">&times;</span> </span>
+        <span>CUTS <span class="mark">&times;</span> FRAMES <span class="mark">&times;</span>
+          COLOR GRADING <span class="mark">&times;</span> MOTION DESIGN <span class="mark">&times;</span> KINETIC TYPE <span class="mark">&times;</span> EDITING <span class="mark">&times;</span> POST-PRODUCTION <span class="mark">&times;</span> </span>
       </div>
     </div>
 
@@ -204,6 +263,13 @@
     </section>
 
   </main>
+
+  <!-- ========== TIMECODE ========== -->
+  <div class="timecode" id="timecode" aria-hidden="true">
+    <div class="timecode__dot"></div>
+    <span id="timecodeValue">00:00:00:00</span>
+    <span class="timecode__label">TC</span>
+  </div>
 
   <footer class="footer">
     <img class="footer__logo" src="Logo Transparent.png" alt="Just Hemang" />

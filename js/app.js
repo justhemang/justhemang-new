@@ -265,7 +265,6 @@ function initAnimations() {
       .from('.hero__char', { opacity: 0, y: 80, stagger: 0.06, duration: 0.9, ease: 'back.out(1.4)' }, '-=0.5')
       .from('#hero .accent-line', { scaleX: 0, duration: 0.8, ease: 'power3.inOut' }, '-=0.4')
       .from('.hero__tagline', { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out' }, '-=0.3')
-      .from('.hero__scroll', { opacity: 0, duration: 0.6, ease: 'power2.out' }, '-=0.1')
       .from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)' }, '-=0.4');
   } else {
     gsap.from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)', delay: 0.2 });
@@ -681,6 +680,37 @@ function initToolkit() {
 }
 
 /* ============================================================
+   TIMECODE
+   ============================================================ */
+function initTimecode() {
+  const el = $('#timecodeValue');
+  if (!el) return;
+  const start = performance.now();
+  (function loop() {
+    const elapsed = performance.now() - start;
+    const totalFrames = Math.floor(elapsed / (1000 / 24));
+    const f = totalFrames % 24;
+    const totalSec = Math.floor(elapsed / 1000);
+    const s = totalSec % 60;
+    const m = Math.floor(totalSec / 60) % 60;
+    const h = Math.floor(totalSec / 3600);
+    el.textContent = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0') + ':' + String(f).padStart(2, '0');
+    requestAnimationFrame(loop);
+  })();
+}
+
+/* ============================================================
+   FILM STRIP SCROLL
+   ============================================================ */
+function initFilmstrip() {
+  if (REDUCED) return;
+  const track = $('#filmstripTrack');
+  if (!track) return;
+  const clone = track.innerHTML;
+  track.innerHTML += clone;
+}
+
+/* ============================================================
    INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
@@ -697,4 +727,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMarquee();
   initPageTransition();
   initToolkit();
+  initTimecode();
+  initFilmstrip();
 });

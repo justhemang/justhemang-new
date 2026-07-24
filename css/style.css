@@ -342,6 +342,62 @@ body.page-sub .capabilities,
 body.page-sub .toolkit{max-width:100%;padding-left:var(--pad);padding-right:var(--pad)}
 
 /* ============================================================
+   CINEMATIC VIDEO EDITING ELEMENTS
+   ============================================================ */
+
+/* letterbox bars */
+.hero__letterbox{position:absolute;left:0;right:0;height:clamp(30px,5vh,60px);background:var(--ink);z-index:5;pointer-events:none}
+.hero__letterbox--top{top:0}
+.hero__letterbox--bottom{bottom:0}
+
+/* timecode */
+.timecode{position:fixed;bottom:1.5rem;left:1.5rem;z-index:calc(var(--z-fx)+1);font-family:var(--font-mono);font-size:.6rem;font-weight:700;letter-spacing:.12em;color:var(--teal-light);opacity:.5;pointer-events:none;display:flex;align-items:center;gap:.6rem}
+.timecode__dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-dot 1s ease-in-out infinite}
+.timecode__label{color:var(--ink-3);font-size:.5rem;letter-spacing:.15em}
+
+/* film strip sprocket holes */
+.filmstrip{display:flex;align-items:center;justify-content:center;gap:0;padding:0;overflow:hidden;height:40px;background:var(--ink);position:relative}
+.filmstrip__track{display:flex;gap:0;animation:filmScroll 20s linear infinite}
+.filmstrip__hole{width:18px;height:12px;border:1px solid rgba(110,198,198,.15);border-radius:2px;margin:0 8px;flex-shrink:0}
+@keyframes filmScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* work item play button */
+.work__play{position:absolute;top:50%;right:0;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1.5px solid var(--teal-dim);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s,transform .3s;opacity:0}
+.work__item:hover .work__play{opacity:1}
+.work__play::after{content:'';display:block;width:0;height:0;border-style:solid;border-width:7px 0 7px 12px;border-color:transparent transparent transparent var(--teal);margin-left:2px;transition:border-color .3s}
+.work__play:hover{border-color:var(--teal);background:var(--teal);transform:translateY(-50%) scale(1.1)}
+.work__play:hover::after{border-color:transparent transparent transparent var(--paper)}
+.work__item{position:relative}
+
+/* clapperboard divider */
+.clap-divider{display:flex;align-items:center;justify-content:center;padding:clamp(1rem,2vh,2rem) var(--pad);gap:1rem}
+.clap-divider__bar{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--teal-dim),transparent)}
+.clap-divider__icon{font-family:var(--font-mono);font-size:.6rem;font-weight:700;letter-spacing:.15em;color:var(--teal);opacity:.5;white-space:nowrap}
+
+/* cinematic reel overlay */
+.reel__wrap::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(42,37,32,.15) 0%,transparent 15%,transparent 85%,rgba(42,37,32,.15) 100%);pointer-events:none}
+
+/* hero cinematic extras */
+.hero__rec{position:absolute;top:clamp(40px,5vh,65px);right:var(--pad);z-index:6;display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.55rem;font-weight:700;letter-spacing:.12em;color:var(--accent);opacity:.7}
+.hero__rec::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-dot 1.5s ease-in-out infinite}
+.hero__fps{position:absolute;top:clamp(40px,5vh,65px);left:var(--pad);z-index:6;font-family:var(--font-mono);font-size:.55rem;font-weight:700;letter-spacing:.1em;color:var(--teal-light);opacity:.5}
+
+/* film grain animated overlay */
+.fx-grain{position:fixed;inset:0;z-index:calc(var(--z-fx)-1);pointer-events:none;opacity:.04;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");background-size:256px 256px;animation:grainShift .8s steps(4) infinite}
+@keyframes grainShift{0%{transform:translate(0,0)}25%{transform:translate(-2px,1px)}50%{transform:translate(1px,-1px)}75%{transform:translate(-1px,2px)}100%{transform:translate(0,0)}}
+
+/* section countdown markers */
+.section__marker{font-family:var(--font-mono);font-size:.5rem;font-weight:700;letter-spacing:.2em;color:var(--teal);opacity:.3;text-align:center;margin-bottom:.5rem}
+
+/* waveform decoration */
+.waveform{display:flex;align-items:end;justify-content:center;gap:2px;height:20px;padding:1rem 0}
+.waveform__bar{width:2px;background:var(--teal);opacity:.2;border-radius:1px;animation:waveformPulse 1.2s ease-in-out infinite}
+.waveform__bar:nth-child(2n){animation-delay:.2s}
+.waveform__bar:nth-child(3n){animation-delay:.4s}
+.waveform__bar:nth-child(5n){animation-delay:.6s}
+@keyframes waveformPulse{0%,100%{height:4px}50%{height:16px}}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media(max-width:860px){
