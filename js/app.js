@@ -27,7 +27,7 @@ function initHero() {
   const textureLoader = new THREE.TextureLoader();
   const logoTexture = textureLoader.load('Logo Transparent.png');
   const logoMat = new THREE.MeshBasicMaterial({
-    map: logoTexture, transparent: true, opacity: 0.15,
+    map: logoTexture, transparent: true, opacity: 0.4,
     side: THREE.DoubleSide, depthWrite: false,
   });
   const logoGeo = new THREE.PlaneGeometry(2.2, 2.2);
@@ -35,12 +35,12 @@ function initHero() {
   scene.add(logoMesh);
 
   const ringGeo = new THREE.RingGeometry(1.6, 1.63, 64);
-  const ringMat = new THREE.MeshBasicMaterial({ color: 0x66d9ef, transparent: true, opacity: 0.12, side: THREE.DoubleSide });
+  const ringMat = new THREE.MeshBasicMaterial({ color: 0x66d9ef, transparent: true, opacity: 0.3, side: THREE.DoubleSide });
   const ring = new THREE.Mesh(ringGeo, ringMat);
   scene.add(ring);
 
   const outerGeo = new THREE.RingGeometry(2.1, 2.13, 64);
-  const outerMat = new THREE.MeshBasicMaterial({ color: 0x3399ff, transparent: true, opacity: 0.06, side: THREE.DoubleSide });
+  const outerMat = new THREE.MeshBasicMaterial({ color: 0x3399ff, transparent: true, opacity: 0.15, side: THREE.DoubleSide });
   const outer = new THREE.Mesh(outerGeo, outerMat);
   scene.add(outer);
 
