@@ -140,29 +140,6 @@ function initScrollProgress() {
   }, { passive: true });
 }
 
-function splitText(el) {
-  const ariaText = el.textContent;
-  el.setAttribute('aria-label', ariaText);
-  const result = [];
-  function walk(node) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      [...node.textContent].forEach((char) => {
-        const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        span.style.display = 'inline-block';
-        result.push(span);
-        node.parentNode.insertBefore(span, node);
-      });
-      node.remove();
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      if (node.tagName === 'BR') { result.push(node); return; }
-      [...node.childNodes].forEach(walk);
-    }
-  }
-  [...el.childNodes].forEach(walk);
-  return result;
-}
-
 function initCounters() {
   if (REDUCED || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   $$('.stat__num').forEach((el) => {
@@ -244,12 +221,46 @@ function initAnimations() {
     gsap.from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)', delay: 0.2 });
   }
 
-  $$('.text-split').forEach((el) => {
-    const chars = splitText(el);
-    gsap.from(chars, {
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      opacity: 0, y: 40,
-      stagger: 0.02, duration: 0.5, ease: 'back.out(1.7)',
+  $$('.tw-type').forEach((el) => {
+    const originalHTML = el.innerHTML;
+    el.setAttribute('aria-label', el.textContent);
+    const parts = [];
+    function extractText(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        parts.push({ type: 'text', value: node.textContent });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName === 'BR') { parts.push({ type: 'br' }); return; }
+        [...node.childNodes].forEach(extractText);
+      }
+    }
+    [...el.childNodes].forEach(extractText);
+    el.innerHTML = '';
+    el.classList.add('tw-active');
+    let pi = 0, ci = 0;
+    function typeChar() {
+      if (pi >= parts.length) { el.classList.add('tw-done'); return; }
+      const part = parts[pi];
+      if (part.type === 'br') {
+        el.appendChild(document.createElement('br'));
+        pi++;
+        setTimeout(typeChar, 60);
+        return;
+      }
+      if (ci < part.value.length) {
+        el.appendChild(document.createTextNode(part.value[ci] === ' ' ? '\u00A0' : part.value[ci]));
+        ci++;
+        setTimeout(typeChar, 28 + Math.random() * 22);
+      } else {
+        pi++;
+        ci = 0;
+        setTimeout(typeChar, 10);
+      }
+    }
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => setTimeout(typeChar, 100),
     });
   });
 
