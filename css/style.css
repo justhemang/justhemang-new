@@ -40,12 +40,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 body.has-cursor,body.has-cursor *{cursor:none!important}
 
 .page-transition{position:fixed;inset:0;z-index:2000;pointer-events:none;perspective:1200px}
-.pt-bar{position:absolute;left:0;width:100%;transform-origin:center center}
-.pt-bar--1{top:0;height:25%;background:var(--ink)}
-.pt-bar--2{top:25%;height:20%;background:var(--accent)}
-.pt-bar--3{top:45%;height:15%;background:var(--teal)}
-.pt-bar--4{top:60%;height:25%;background:var(--ink-2)}
-.pt-bar--5{top:85%;height:15%;background:var(--teal-light);opacity:.7}
+.pt-bar{position:absolute;left:0;width:100%;height:100%;transform-origin:center center}
+.pt-bar--1{top:0;height:20%;background:var(--ink)}
+.pt-bar--2{top:20%;height:20%;background:var(--accent)}
+.pt-bar--3{top:40%;height:20%;background:var(--teal)}
+.pt-bar--4{top:60%;height:20%;background:var(--ink-2)}
+.pt-bar--5{top:80%;height:20%;background:var(--teal-light);opacity:.7}
 .pt-circle{position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:var(--paper);transform:translate(-50%,-50%) scale(0)}
 
 .fx-scanlines{position:fixed;inset:0;z-index:var(--z-fx);pointer-events:none;opacity:.06;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(42,37,32,.03) 3px 4px)}
@@ -97,7 +97,7 @@ body.has-cursor .cursor{display:block}
 
 .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--ink);overflow:hidden;text-align:center}
 .hero__canvas{position:absolute;inset:0;width:100%;height:100%}
-.hero__content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:clamp(4rem,10vh,7rem) var(--pad) 1rem}
+.hero__content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:2rem var(--pad) 1rem}
 .hero__pre{font-family:var(--font-mono);font-size:clamp(.55rem,1.1vw,.7rem);font-weight:500;letter-spacing:.25em;color:var(--teal-light);margin-bottom:1.5rem;text-transform:uppercase}
 .hero__title{display:flex;flex-direction:column;align-items:center}
 .hero__line{width:fit-content}
@@ -240,6 +240,13 @@ body.has-cursor .cursor{display:block}
 .services-hero .section__eyebrow,.services-hero .section__heading{color:var(--paper)}
 .services-hero .section__heading{font-family:var(--font-hero);font-size:clamp(3rem,12vw,12rem);font-weight:400;line-height:.88;letter-spacing:.02em;-webkit-text-stroke:2px var(--paper)}
 .services-list{padding:0 var(--pad) var(--section-gap);max-width:1000px;margin:0 auto}
+.services-tabs{padding:0 var(--pad) var(--section-gap);max-width:1000px;margin:0 auto}
+.services-tabs__nav{display:flex;gap:0;border-bottom:1px solid var(--teal-dim);margin-bottom:clamp(1.5rem,3vh,3rem)}
+.services-tabs__btn{flex:1;font-family:var(--font-mono);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:1rem;color:var(--ink-3);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .3s,border-color .3s}
+.services-tabs__btn:hover{color:var(--teal)}
+.services-tabs__btn.active{color:var(--teal);border-bottom-color:var(--teal)}
+.services-tabs__panel{display:none}
+.services-tabs__panel.active{display:block}
 .service-item{border-top:1px solid var(--teal-dim);padding:clamp(1.5rem,3vh,3rem) 0;display:grid;grid-template-columns:1fr 2fr;gap:clamp(1.2rem,3.5vw,3.5rem);text-align:left;transition:padding-left .3s;position:relative}
 .service-item:hover{padding-left:.5rem}
 .service-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--teal);transition:height .4s cubic-bezier(.4,0,.2,1)}
@@ -313,7 +320,7 @@ body.page-sub .contact-form,
 body.page-sub .capabilities,
 body.page-sub .toolkit{max-width:100%;padding-left:var(--pad);padding-right:var(--pad)}
 
-.hero__letterbox{position:absolute;left:0;right:0;height:clamp(30px,5vh,60px);background:var(--ink);z-index:5;pointer-events:none}
+.hero__letterbox{position:absolute;left:0;right:0;height:clamp(18px,3vh,35px);background:var(--ink);z-index:5;pointer-events:none}
 .hero__letterbox--top{top:0}
 .hero__letterbox--bottom{bottom:0}
 

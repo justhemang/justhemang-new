@@ -209,7 +209,7 @@ function initAnimations() {
   }
 
   if (IS_HOME) {
-    const tl = gsap.timeline({ delay: 0.3 });
+    const tl = gsap.timeline({ delay: 0.8 });
     tl.from('.hero__typewriter', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' })
       .from('.hero__pre', { opacity: 0, y: -20, duration: 0.8, ease: 'power3.out' }, '-=0.4')
       .from('.hero__line--top', { opacity: 0, x: -80, skewX: -8, duration: 0.9, ease: 'power4.out' }, '-=0.4')
@@ -218,7 +218,7 @@ function initAnimations() {
       .from('.hero__tagline', { opacity: 0, y: 30, duration: 0.8, ease: 'power3.out' }, '-=0.3')
       .from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)' }, '-=0.4');
   } else {
-    gsap.from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)', delay: 0.2 });
+    gsap.from('.nav__menu-btn', { opacity: 0, scale: 0, duration: 0.5, ease: 'back.out(2)', delay: 0.3 });
   }
 
   $$('.tw-type').forEach((el) => {
@@ -576,9 +576,10 @@ function initPageTransition() {
   gsap.set(bars, { xPercent: 0 });
   if (circle) gsap.set(circle, { scale: 0 });
 
-  const tl = gsap.timeline({ delay: 0.15 });
-  tl.to(bars, { xPercent: -100, stagger: 0.06, duration: 0.6, ease: 'power4.inOut' });
-  if (circle) tl.to(circle, { scale: 80, duration: 0.5, ease: 'power2.in' }, '-=0.3');
+  const tl = gsap.timeline({ delay: 0.1 });
+  tl.to(bars, { xPercent: 100, stagger: 0.05, duration: 0.5, ease: 'power3.inOut' });
+  if (circle) tl.to(circle, { scale: 80, duration: 0.4, ease: 'power2.in' }, '-=0.3');
+  tl.set(overlay, { display: 'none' });
 
   $$('a[href]').forEach((link) => {
     const href = link.getAttribute('href');
@@ -595,11 +596,12 @@ function initPageTransition() {
         overlayEl.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
       }
+      overlay.style.display = '';
       gsap.set(bars, { xPercent: 0 });
       if (circle) gsap.set(circle, { scale: 0 });
       const tlIn = gsap.timeline();
-      tlIn.to(bars, { xPercent: 0, stagger: 0.05, duration: 0.5, ease: 'power4.inOut' });
-      if (circle) tlIn.to(circle, { scale: 80, duration: 0.4, ease: 'power2.in' }, '-=0.2');
+      tlIn.to(bars, { xPercent: 100, stagger: 0.04, duration: 0.45, ease: 'power3.inOut' });
+      if (circle) tlIn.to(circle, { scale: 80, duration: 0.35, ease: 'power2.in' }, '-=0.2');
       tlIn.call(() => { location.href = url; });
     });
   });
@@ -700,6 +702,19 @@ function initLiveClock() {
   }
   update();
   setInterval(update, 1000);
+}
+
+function initTabs() {
+  $$('.services-tabs__btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      $$('.services-tabs__btn').forEach((b) => b.classList.remove('active'));
+      $$('.services-tabs__panel').forEach((p) => p.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = $('#tab-' + tab);
+      if (panel) panel.classList.add('active');
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
