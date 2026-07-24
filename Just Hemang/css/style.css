@@ -195,6 +195,31 @@ body.has-cursor .cursor{display:block}
 .reel__wrap:hover{border-color:var(--teal);box-shadow:0 8px 40px rgba(42,122,122,.12)}
 .reel__wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
 
+/* services grid (home) */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1000px;margin:0 auto}
+.services-grid__card{border:1px solid var(--teal-dim);padding:clamp(1.2rem,2.5vh,2rem);text-align:left;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden;background:var(--paper)}
+.services-grid__card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--teal);transition:height .4s cubic-bezier(.4,0,.2,1)}
+.services-grid__card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 8px 30px rgba(42,122,122,.1)}
+.services-grid__card:hover::before{height:100%}
+.services-grid__icon{font-size:1.5rem;margin-bottom:.6rem;display:block}
+.services-grid__name{font-family:var(--font-display);font-size:clamp(1rem,2vw,1.3rem);font-weight:700;margin-bottom:.4rem;transition:color .3s}
+.services-grid__card:hover .services-grid__name{color:var(--teal)}
+.services-grid__desc{font-family:var(--font-mono);font-size:.72rem;line-height:1.7;color:var(--ink-2);margin-bottom:.6rem}
+.services-grid__tags{display:flex;gap:.4rem;flex-wrap:wrap}
+
+/* testimonials */
+.testimonials{background:var(--ink);color:var(--paper);padding:var(--section-gap) var(--pad)}
+.testimonials .section__eyebrow{color:var(--teal-light)}
+.testimonials .section__heading{color:var(--paper)}
+.testimonials__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1000px;margin:0 auto}
+.testimonials__card{border:1px solid rgba(110,198,198,.15);padding:clamp(1.2rem,2.5vh,2rem);position:relative;transition:border-color .3s,transform .3s,box-shadow .3s}
+.testimonials__card:hover{border-color:var(--teal-light);transform:translateY(-4px);box-shadow:0 8px 30px rgba(42,122,122,.15)}
+.testimonials__card::before{content:'\201C';position:absolute;top:.6rem;left:1rem;font-family:var(--font-hero);font-size:3rem;color:var(--teal);opacity:.3;line-height:1}
+.testimonials__quote{font-family:var(--font-display);font-size:clamp(.85rem,1.4vw,1rem);font-weight:400;line-height:1.7;color:var(--paper-2);margin-bottom:1.2rem;position:relative;z-index:1}
+.testimonials__author{border-top:1px solid rgba(110,198,198,.1);padding-top:.8rem}
+.testimonials__name{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--paper)}
+.testimonials__role{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-light);margin-top:.2rem}
+
 /* marquee */
 .marquee{overflow:hidden;white-space:nowrap;user-select:none;padding:clamp(1.2rem,2.5vh,2rem) 0;border-top:1px solid var(--teal-dim);border-bottom:1px solid var(--teal-dim);background:linear-gradient(135deg,var(--paper-2),var(--paper))}
 .marquee__track{display:inline-flex;will-change:transform}
@@ -287,6 +312,9 @@ body.has-cursor .cursor{display:block}
 .contact-form__submit{font-family:var(--font-mono);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.9rem 2.2rem;background:var(--teal);color:var(--paper);border:1px solid var(--teal);cursor:pointer;transition:background .25s,color .25s,transform .2s,box-shadow .3s}
 .contact-form__submit:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);box-shadow:0 6px 20px rgba(42,37,32,.15)}
 
+/* sub-page overrides */
+body.page-sub main{max-width:960px;margin:0 auto;padding:0 var(--pad)}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -296,6 +324,8 @@ body.has-cursor .cursor{display:block}
   .service-item{grid-template-columns:1fr;gap:.8rem}
   .pricing__grid{grid-template-columns:1fr}
   .toolkit__grid{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+  .services-grid{grid-template-columns:1fr}
+  .testimonials__grid{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .work__item{grid-template-columns:1fr;gap:.3rem}
