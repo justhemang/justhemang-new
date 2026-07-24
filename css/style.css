@@ -56,8 +56,11 @@ body.has-cursor,body.has-cursor *{cursor:none!important}
 .cursor{display:none}
 body.has-cursor .cursor{display:block}
 .cursor__dot{position:fixed;top:0;left:0;z-index:var(--z-cursor);width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--teal);pointer-events:none;border-radius:50%;transition:width .2s,height .2s,margin .2s,background .2s,border-radius .2s}
-.cursor__ring{position:fixed;top:0;left:0;z-index:var(--z-cursor);width:36px;height:36px;margin:-18px 0 0 -18px;border:1.5px solid var(--teal);pointer-events:none;border-radius:50%;transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s cubic-bezier(.25,.46,.45,.94),margin .35s cubic-bezier(.25,.46,.45,.94),border-color .3s,background .3s,border-radius .3s}
-.cursor__ring.is-active{width:60px;height:60px;margin:-30px 0 0 -30px;background:var(--teal);border-color:var(--ink)}
+.cursor__ring{position:fixed;top:0;left:0;z-index:var(--z-cursor);width:48px;height:48px;margin:-24px 0 0 -24px;border:1.5px solid var(--teal);pointer-events:none;transition:width .35s cubic-bezier(.25,.46,.45,.94),height .35s cubic-bezier(.25,.46,.45,.94),margin .35s cubic-bezier(.25,.46,.45,.94),border-color .3s,background .3s,border-radius .3s}
+.cursor__ring::before,.cursor__ring::after{content:'';position:absolute;background:var(--teal);transition:opacity .3s}
+.cursor__ring::before{top:50%;left:-6px;width:6px;height:1.5px;margin-top:-1px}
+.cursor__ring::after{top:-6px;left:50%;width:1.5px;height:6px;margin-left:-1px}
+.cursor__ring.is-active{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(42,122,122,.08);border-color:var(--ink)}
 .cursor__ring.is-down{transform:scale(.85);transition-duration:.1s}
 
 .menu-fab{position:fixed;top:50%;right:1.2rem;transform:translateY(-50%);z-index:var(--z-menu-btn);width:48px;height:48px;border-radius:50%;background:rgba(245,240,232,.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(42,37,32,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:background .3s,box-shadow .3s,border-color .3s}
