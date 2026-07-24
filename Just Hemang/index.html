@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Just Hemang — Creative Studio</title>
   <meta name="description" content="Just Hemang — video editor, graphic designer, frontend developer." />
-  <meta name="theme-color" content="#1e1e1e" />
+  <meta name="theme-color" content="#2a2520" />
   <link rel="icon" href="Logo Transparent.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,558 +14,128 @@
 </head>
 <body>
 
-  <!-- ═══ PREMIERE TOP BAR ═══ -->
-  <header class="pr-topbar">
-    <div class="pr-topbar__traffic">
-      <span class="pr-dot pr-dot--r"></span>
-      <span class="pr-dot pr-dot--y"></span>
-      <span class="pr-dot pr-dot--g"></span>
-    </div>
-    <div class="pr-topbar__icon">Pr</div>
-    <nav class="pr-topbar__menu">
-      <span>File</span><span>Edit</span><span>Clip</span><span>Sequence</span><span>Markers</span><span>Graphics</span><span>View</span><span>Window</span><span>Help</span>
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <div class="pt-bar pt-bar--1"></div><div class="pt-bar pt-bar--2"></div><div class="pt-bar pt-bar--3"></div><div class="pt-bar pt-bar--4"></div><div class="pt-bar pt-bar--5"></div>
+    <div class="pt-circle"></div>
+  </div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <div class="cursor__ring" id="cursorRing"></div>
+    <div class="cursor__dot" id="cursorDot"></div>
+  </div>
+  <div class="fx-scanlines" aria-hidden="true"></div>
+  <div class="fx-vignette" aria-hidden="true"></div>
+
+  <button class="menu-fab" id="menuFab" aria-label="Open menu" aria-expanded="false">
+    <i></i><i></i><i></i>
+  </button>
+
+  <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <nav class="menu-overlay__links" aria-label="Menu">
+      <a class="menu-overlay__link" href="index.html" data-i="01">Home</a>
+      <a class="menu-overlay__link" href="html/page_about.html" data-i="02">About</a>
+      <a class="menu-overlay__link" href="html/page_2.html" data-i="03">Work</a>
+      <a class="menu-overlay__link" href="html/page_3.html" data-i="04">Services</a>
+      <a class="menu-overlay__link" href="html/page_4.html" data-i="05">Contact</a>
     </nav>
-    <div class="pr-topbar__hamburger" id="prHamburger" title="Navigate Site">&#9776;</div>
-    <div class="pr-topbar__title">Adobe Premiere Pro — Just Hemang.prproj</div>
-  </header>
-
-  <!-- ═══ WORKSPACE BAR ═══ -->
-  <div class="pr-workspaces" id="prWorkspaces">
-    <button class="pr-workspace-btn pr-workspace-btn--active" data-ws="editing">Editing</button>
-    <button class="pr-workspace-btn" data-ws="color">Color</button>
-    <button class="pr-workspace-btn" data-ws="audio">Audio</button>
-    <button class="pr-workspace-btn" data-ws="effects">Effects</button>
-    <button class="pr-workspace-btn" data-ws="graphics">Graphics</button>
+    <div class="menu-overlay__foot">
+      <a href="https://github.com/justhemang" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/hemang-luthra-328a65303/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/justhemang6/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://youtube.com/@JustHemang" target="_blank" rel="noopener">YouTube</a>
+    </div>
   </div>
 
-  <!-- ═══ MAIN CONTAINER ═══ -->
-  <div class="pr-container" id="prContainer">
-
-    <!-- ── LEFT SIDEBAR ── -->
-    <div class="pr-sidebar-l" id="sidebarL">
-
-      <!-- Tools Toolbar -->
-      <div class="pr-toolbar" id="prToolbar">
-        <div class="pr-tool pr-tool--active" data-tool="select" title="Selection Tool (V)">&#9658;</div>
-        <div class="pr-tool" data-tool="trackselect" title="Track Select Forward (A)">&#8680;</div>
-        <div class="pr-tool" data-tool="ripple" title="Ripple Edit (B)">&#8644;</div>
-        <div class="pr-tool" data-tool="rolling" title="Rolling Edit (N)">&#8646;</div>
-        <div class="pr-tool" data-tool="ratestretch" title="Rate Stretch (R)">&#8647;</div>
-        <div class="pr-tool" data-tool="razor" title="Razor (C)">&#9986;</div>
-        <div class="pr-tool" data-tool="slip" title="Slip (Y)">&#8596;</div>
-        <div class="pr-tool" data-tool="slide" title="Slide (U)">&#8597;</div>
-        <div class="pr-tool" data-tool="pen" title="Pen (P)">&#9998;</div>
-        <div class="pr-tool" data-tool="hand" title="Hand (H)">&#9995;</div>
-        <div class="pr-tool" data-tool="zoom" title="Zoom (Z)">&#128269;</div>
+  <main id="top">
+    <section class="hero" id="hero">
+      <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero__content">
+        <p class="hero__pre mono">Video Editor &middot; Graphic Designer &middot; Frontend Dev</p>
+        <h1 class="hero__title" aria-label="Just Hemang">
+          <span class="hero__line hero__line--top">JUST</span>
+          <span class="hero__line hero__line--big">
+            <span class="hero__char">H</span><span class="hero__char">E</span><span class="hero__char">M</span><span class="hero__char">A</span><span class="hero__char">N</span><span class="hero__char">G</span>
+          </span>
+        </h1>
+        <div class="accent-line"></div>
+        <p class="hero__tagline mono">I don't just push pixels — I slam them into place.</p>
       </div>
+      <div class="hero__scroll mono" aria-hidden="true">Scroll to explore</div>
+    </section>
 
-      <!-- Left Panels -->
-      <div class="pr-left-panels">
-        <!-- Project Bin -->
-        <div class="pr-panel-half" id="prProjectPanel">
-          <div class="pr-panel-half__head">Project <span style="color:var(--pr-accent)">·</span></div>
-          <div class="pr-project-bin" id="prProjectBin">
-            <div class="pr-bin-folder" data-folder="footage"><span class="pr-bin-folder__arrow">&#9654;</span> <span class="pr-bin-folder__name">Footage</span></div>
-            <div class="pr-bin-folder" data-folder="audio"><span class="pr-bin-folder__arrow">&#9654;</span> <span class="pr-bin-folder__name">Audio</span></div>
-            <div class="pr-bin-folder" data-folder="graphics"><span class="pr-bin-folder__arrow">&#9654;</span> <span class="pr-bin-folder__name">Graphics</span></div>
-            <div class="pr-bin-folder pr-bin-folder--open" data-folder="sequences"><span class="pr-bin-folder__arrow">&#9660;</span> <span class="pr-bin-folder__name">Sequences</span></div>
-            <div class="pr-bin-row pr-bin-row--active" data-name="Master_Sequence">
-              <span class="pr-bin-icon" style="background:#8a5a2a;color:#fff">S</span>
-              <span>Master_Sequence</span>
-              <span class="pr-bin-meta">00:00:24:00</span>
-            </div>
-            <div class="pr-bin-row" data-name="justhemang.vercel.app">
-              <span class="pr-bin-icon" style="background:#5a3e8a;color:#fff">V</span>
-              <span>justhemang.vercel.app</span>
-              <span class="pr-bin-meta">00:00:14:12</span>
-            </div>
-            <div class="pr-bin-row" data-name="showreel.mp4">
-              <span class="pr-bin-icon" style="background:#5a3e8a;color:#fff">V</span>
-              <span>showreel.mp4</span>
-              <span class="pr-bin-meta">00:01:22:00</span>
-            </div>
-            <div class="pr-bin-row" data-name="annual_day_cut.mp4">
-              <span class="pr-bin-icon" style="background:#5a3e8a;color:#fff">V</span>
-              <span>annual_day_cut.mp4</span>
-              <span class="pr-bin-meta">00:05:40:18</span>
-            </div>
-            <div class="pr-bin-row" data-name="documentary_v3.mov">
-              <span class="pr-bin-icon" style="background:#5a3e8a;color:#fff">V</span>
-              <span>documentary_v3.mov</span>
-              <span class="pr-bin-meta">00:12:05:04</span>
-            </div>
-            <div class="pr-bin-row" data-name="bgm_track.wav">
-              <span class="pr-bin-icon" style="background:#2a7a5a;color:#fff">A</span>
-              <span>bgm_track.wav</span>
-              <span class="pr-bin-meta">00:03:22:00</span>
-            </div>
-            <div class="pr-bin-row" data-name="sfx_pack.wav">
-              <span class="pr-bin-icon" style="background:#2a7a5a;color:#fff">A</span>
-              <span>sfx_pack.wav</span>
-              <span class="pr-bin-meta">00:00:45:12</span>
-            </div>
-            <div class="pr-bin-row" data-name="motion_reel_2026.mp4">
-              <span class="pr-bin-icon" style="background:#5a3e8a;color:#fff">V</span>
-              <span>motion_reel_2026.mp4</span>
-              <span class="pr-bin-meta">00:00:58:06</span>
-            </div>
-          </div>
-        </div>
+    <section class="stats" id="stats">
+      <div class="stat"><p class="stat__num">150+</p><p class="stat__label mono">Projects</p></div>
+      <div class="stat"><p class="stat__num">5+</p><p class="stat__label mono">Years Exp</p></div>
+      <div class="stat"><p class="stat__num">50+</p><p class="stat__label mono">Clients</p></div>
+      <div class="stat"><p class="stat__num">99%</p><p class="stat__label mono">Satisfaction</p></div>
+    </section>
 
-        <!-- Source Monitor -->
-        <div class="pr-panel-half" id="prSourcePanel">
-          <div class="pr-panel-half__head">Source <span style="color:var(--pr-accent)">·</span> <span id="prSourceLabel" style="color:#666;font-weight:400;text-transform:none">No clip loaded</span></div>
-          <div class="pr-source-monitor">
-            <div class="pr-source-screen">
-              <div class="pr-source-wave" id="prSourceWave">
-                <div class="pr-source-wave__in" id="prSourceIn"></div>
-                <div class="pr-source-wave__out" id="prSourceOut"></div>
-              </div>
-            </div>
-            <div class="pr-source-controls">
-              <span class="pr-source-btn" id="srcMarkIn" title="Mark In [">&#91;</span>
-              <span class="pr-source-btn" id="srcMarkOut" title="Mark Out ]">&#93;</span>
-              <span class="pr-source-btn" id="srcPlay" title="Play/Stop Space">&#9654;</span>
-              <span style="color:#555">|</span>
-              <span class="pr-source-btn" id="srcPrev" title="Previous Marker">&#9664;</span>
-              <span class="pr-source-btn" id="srcNext" title="Next Marker">&#9654;</span>
-            </div>
-          </div>
+    <section class="toolkit" id="toolkit">
+      <p class="section__eyebrow mono anim-slide-left">Toolkit</p>
+      <h2 class="section__heading text-split">Creative Arsenal</h2>
+      <div class="toolkit__grid">
+        <div class="toolkit__card"><div class="toolkit__icon">Pr</div><h3 class="toolkit__name">Premiere Pro</h3><p class="toolkit__role mono">Video Editing</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Ae</div><h3 class="toolkit__name">After Effects</h3><p class="toolkit__role mono">Motion Graphics</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Ps</div><h3 class="toolkit__name">Photoshop</h3><p class="toolkit__role mono">Graphic Design</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Ai</div><h3 class="toolkit__name">Illustrator</h3><p class="toolkit__role mono">Vector Design</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Dr</div><h3 class="toolkit__name">DaVinci Resolve</h3><p class="toolkit__role mono">Color Grading</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Re</div><h3 class="toolkit__name">React / Next.js</h3><p class="toolkit__role mono">Frontend Dev</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Hc</div><h3 class="toolkit__name">HTML / CSS / JS</h3><p class="toolkit__role mono">Web Tech</p></div>
+        <div class="toolkit__card"><div class="toolkit__icon">Ph</div><h3 class="toolkit__name">Photography</h3><p class="toolkit__role mono">Composition & Edit</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="reel">
+      <p class="section__eyebrow mono anim-slide-left">Showreel</p>
+      <h2 class="section__heading text-split">Latest Work</h2>
+      <div class="reel">
+        <div class="reel__wrap anim-scale">
+          <iframe src="https://www.youtube.com/embed/_9LGzL6rh2I" title="Just Hemang Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <p class="section__eyebrow mono anim-slide-left">Selected work</p>
+      <h2 class="section__heading text-split">Projects</h2>
+      <div class="work__grid">
+        <article class="work__item"><span class="work__num mono">01</span><div><h3 class="work__client">Annual Day — Behind the Scenes</h3><p class="work__desc mono">Full event coverage: multi-cam editing, color grading, sound design.</p><div class="work__tags"><span class="work__tag">Premiere Pro</span><span class="work__tag">Color Grading</span><span class="work__tag">Event</span></div></div></article>
+        <article class="work__item"><span class="work__num mono">02</span><div><h3 class="work__client">Documentary Cut — Short Film</h3><p class="work__desc mono">Narrative editing with motion graphics, lower thirds, and cinematic transitions.</p><div class="work__tags"><span class="work__tag">After Effects</span><span class="work__tag">Motion</span><span class="work__tag">Documentary</span></div></div></article>
+        <article class="work__item"><span class="work__num mono">03</span><div><h3 class="work__client">Motion Reel 2026</h3><p class="work__desc mono">Kinetic typography, logo animations, and dynamic transitions.</p><div class="work__tags"><span class="work__tag">After Effects</span><span class="work__tag">Kinetic Type</span><span class="work__tag">Motion</span></div></div></article>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marqueeTrack">
+        <span>FRONTEND DEVELOPER <span class="mark">&times;</span> VIDEO EDITOR <span class="mark">&times;</span> GRAPHIC DESIGNER <span class="mark">&times;</span> MOTION GRAPHICS <span class="mark">&times;</span> COLOR GRADING <span class="mark">&times;</span> </span>
       </div>
     </div>
 
-    <!-- ── VIEWPORT ── -->
-    <div class="pr-viewport" id="prViewport">
-      <div class="page-transition" id="pageTransition" aria-hidden="true">
-        <div class="pt-bar pt-bar--1"></div><div class="pt-bar pt-bar--2"></div><div class="pt-bar pt-bar--3"></div><div class="pt-bar pt-bar--4"></div><div class="pt-bar pt-bar--5"></div>
-        <div class="pt-circle"></div>
+    <section class="section" id="contact">
+      <div class="cta">
+        <h2 class="cta__heading text-split">Let's talk</h2>
+        <a class="cta__btn" href="html/page_4.html">Book a call</a>
       </div>
-      <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-      <div class="cursor" id="cursor" aria-hidden="true">
-        <div class="cursor__ring" id="cursorRing"></div>
-        <div class="cursor__dot" id="cursorDot"></div>
-      </div>
-      <div class="fx-scanlines" aria-hidden="true"></div>
-      <div class="fx-vignette" aria-hidden="true"></div>
+    </section>
+  </main>
 
-      <button class="menu-fab" id="menuFab" aria-label="Open menu" aria-expanded="false">
-        <i></i><i></i><i></i>
-      </button>
-
-      <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
-        <nav class="menu-overlay__links" aria-label="Menu">
-          <a class="menu-overlay__link" href="index.html" data-i="01">Home</a>
-          <a class="menu-overlay__link" href="html/page_about.html" data-i="02">About</a>
-          <a class="menu-overlay__link" href="html/page_2.html" data-i="03">Work</a>
-          <a class="menu-overlay__link" href="html/page_3.html" data-i="04">Services</a>
-          <a class="menu-overlay__link" href="html/page_4.html" data-i="05">Contact</a>
-        </nav>
-        <div class="menu-overlay__foot">
-          <a href="https://github.com/justhemang" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/hemang-luthra-328a65303/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.instagram.com/justhemang6/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://youtube.com/@JustHemang" target="_blank" rel="noopener">YouTube</a>
-        </div>
-      </div>
-
-      <main id="top">
-        <section class="hero" id="hero">
-          <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
-          <div class="hero__content">
-            <p class="hero__pre mono">Video Editor &middot; Graphic Designer &middot; Frontend Dev</p>
-            <h1 class="hero__title" aria-label="Just Hemang">
-              <span class="hero__line hero__line--top">JUST</span>
-              <span class="hero__line hero__line--big">
-                <span class="hero__char">H</span><span class="hero__char">E</span><span class="hero__char">M</span><span class="hero__char">A</span><span class="hero__char">N</span><span class="hero__char">G</span>
-              </span>
-            </h1>
-            <div class="accent-line"></div>
-            <p class="hero__tagline mono">I don't just push pixels — I slam them into place.</p>
-          </div>
-          <div class="hero__scroll mono" aria-hidden="true">Scroll to explore</div>
-        </section>
-
-        <section class="stats" id="stats">
-          <div class="stat"><p class="stat__num">150+</p><p class="stat__label mono">Projects</p></div>
-          <div class="stat"><p class="stat__num">5+</p><p class="stat__label mono">Years Exp</p></div>
-          <div class="stat"><p class="stat__num">50+</p><p class="stat__label mono">Clients</p></div>
-          <div class="stat"><p class="stat__num">99%</p><p class="stat__label mono">Satisfaction</p></div>
-        </section>
-
-        <section class="toolkit" id="toolkit">
-          <p class="section__eyebrow mono anim-slide-left">Toolkit</p>
-          <h2 class="section__heading text-split">Creative Arsenal</h2>
-          <div class="toolkit__grid">
-            <div class="toolkit__card"><div class="toolkit__icon">Pr</div><h3 class="toolkit__name">Premiere Pro</h3><p class="toolkit__role mono">Video Editing</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Ae</div><h3 class="toolkit__name">After Effects</h3><p class="toolkit__role mono">Motion Graphics</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Ps</div><h3 class="toolkit__name">Photoshop</h3><p class="toolkit__role mono">Graphic Design</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Ai</div><h3 class="toolkit__name">Illustrator</h3><p class="toolkit__role mono">Vector Design</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Dr</div><h3 class="toolkit__name">DaVinci Resolve</h3><p class="toolkit__role mono">Color Grading</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Re</div><h3 class="toolkit__name">React / Next.js</h3><p class="toolkit__role mono">Frontend Dev</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Hc</div><h3 class="toolkit__name">HTML / CSS / JS</h3><p class="toolkit__role mono">Web Tech</p></div>
-            <div class="toolkit__card"><div class="toolkit__icon">Ph</div><h3 class="toolkit__name">Photography</h3><p class="toolkit__role mono">Composition & Edit</p></div>
-          </div>
-        </section>
-
-        <section class="section" id="reel">
-          <p class="section__eyebrow mono anim-slide-left">Showreel</p>
-          <h2 class="section__heading text-split">Latest Work</h2>
-          <div class="reel">
-            <div class="reel__wrap anim-scale">
-              <iframe src="https://www.youtube.com/embed/_9LGzL6rh2I" title="Just Hemang Showreel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            </div>
-          </div>
-        </section>
-
-        <section class="section work" id="work">
-          <p class="section__eyebrow mono anim-slide-left">Selected work</p>
-          <h2 class="section__heading text-split">Projects</h2>
-          <div class="work__grid">
-            <article class="work__item"><span class="work__num mono">01</span><div><h3 class="work__client">Annual Day — Behind the Scenes</h3><p class="work__desc mono">Full event coverage: multi-cam editing, color grading, sound design.</p><div class="work__tags"><span class="work__tag">Premiere Pro</span><span class="work__tag">Color Grading</span><span class="work__tag">Event</span></div></div></article>
-            <article class="work__item"><span class="work__num mono">02</span><div><h3 class="work__client">Documentary Cut — Short Film</h3><p class="work__desc mono">Narrative editing with motion graphics, lower thirds, and cinematic transitions.</p><div class="work__tags"><span class="work__tag">After Effects</span><span class="work__tag">Motion</span><span class="work__tag">Documentary</span></div></div></article>
-            <article class="work__item"><span class="work__num mono">03</span><div><h3 class="work__client">Motion Reel 2026</h3><p class="work__desc mono">Kinetic typography, logo animations, and dynamic transitions.</p><div class="work__tags"><span class="work__tag">After Effects</span><span class="work__tag">Kinetic Type</span><span class="work__tag">Motion</span></div></div></article>
-          </div>
-        </section>
-
-        <div class="marquee" aria-hidden="true">
-          <div class="marquee__track" id="marqueeTrack">
-            <span>FRONTEND DEVELOPER <span class="mark">&times;</span> VIDEO EDITOR <span class="mark">&times;</span> GRAPHIC DESIGNER <span class="mark">&times;</span> MOTION GRAPHICS <span class="mark">&times;</span> COLOR GRADING <span class="mark">&times;</span> </span>
-          </div>
-        </div>
-
-        <section class="section" id="contact">
-          <div class="cta">
-            <h2 class="cta__heading text-split">Let's talk</h2>
-            <a class="cta__btn" href="html/page_4.html">Book a call</a>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <img class="footer__logo" src="Logo Transparent.png" alt="Just Hemang" />
-        <div class="footer__row">
-          <div class="footer__links">
-            <a href="mailto:justhemang@gmail.com">Email</a>
-            <a href="https://github.com/justhemang" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/hemang-luthra-328a65303/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://www.instagram.com/justhemang6/" target="_blank" rel="noopener">Instagram</a>
-            <a href="https://youtube.com/@JustHemang" target="_blank" rel="noopener">YouTube</a>
-          </div>
-        </div>
-        <p class="footer__copy mono">&copy; 2026 Just Hemang. All rights reserved.</p>
-      </footer>
-    </div>
-
-    <!-- ── RIGHT SIDEBAR ── -->
-    <div class="pr-sidebar-r" id="sidebarR">
-
-      <!-- Lumetri Color -->
-      <div class="pr-sidebar-section" id="prLumetriSection">
-        <div class="pr-sidebar-section__head">Lumetri Color <span style="color:var(--pr-accent)">·</span></div>
-        <div class="pr-lumetri" id="prLumetri">
-          <!-- Basic Correction -->
-          <div class="pr-lumetri__group">
-            <div class="pr-lumetri__title" data-collapse="lum-basic">Basic Correction &#9660;</div>
-            <div class="pr-lumetri__body" id="lum-basic">
-              <div class="pr-slider" data-param="temperature"><span class="pr-slider__label">Temperature</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="tint"><span class="pr-slider__label">Tint</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="exposure"><span class="pr-slider__label">Exposure</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="contrast"><span class="pr-slider__label">Contrast</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0</span></div>
-              <div class="pr-slider" data-param="highlights"><span class="pr-slider__label">Highlights</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="shadows"><span class="pr-slider__label">Shadows</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="whites"><span class="pr-slider__label">Whites</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="blacks"><span class="pr-slider__label">Blacks</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="saturation"><span class="pr-slider__label">Saturation</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">100.0</span></div>
-            </div>
-          </div>
-          <!-- Color Wheels -->
-          <div class="pr-lumetri__group">
-            <div class="pr-lumetri__title" data-collapse="lum-wheels">Color Wheels &#9660;</div>
-            <div class="pr-lumetri__body" id="lum-wheels">
-              <div class="pr-color-wheels">
-                <div class="pr-color-wheel-wrap"><div class="pr-color-wheel" data-wheel="shadows"><div class="pr-color-wheel__puck"></div></div><span class="pr-color-wheel__label">Shadows</span></div>
-                <div class="pr-color-wheel-wrap"><div class="pr-color-wheel" data-wheel="midtones"><div class="pr-color-wheel__puck"></div></div><span class="pr-color-wheel__label">Midtones</span></div>
-                <div class="pr-color-wheel-wrap"><div class="pr-color-wheel" data-wheel="highlights"><div class="pr-color-wheel__puck"></div></div><span class="pr-color-wheel__label">Highlights</span></div>
-              </div>
-            </div>
-          </div>
-          <!-- HSL Secondary -->
-          <div class="pr-lumetri__group">
-            <div class="pr-lumetri__title" data-collapse="lum-hsl">HSL Secondary &#9654;</div>
-            <div class="pr-lumetri__body pr-lumetri__body--collapsed" id="lum-hsl">
-              <div class="pr-slider" data-param="hsl-hue"><span class="pr-slider__label">Hue</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="hsl-sat"><span class="pr-slider__label">Saturation</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="hsl-lum"><span class="pr-slider__label">Luminance</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-            </div>
-          </div>
-          <!-- Vignette -->
-          <div class="pr-lumetri__group">
-            <div class="pr-lumetri__title" data-collapse="lum-vig">Vignette &#9654;</div>
-            <div class="pr-lumetri__body pr-lumetri__body--collapsed" id="lum-vig">
-              <div class="pr-slider" data-param="vig-amount"><span class="pr-slider__label">Amount</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="vig-midpoint"><span class="pr-slider__label">Midpoint</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">50.0</span></div>
-              <div class="pr-slider" data-param="vig-roundness"><span class="pr-slider__label">Roundness</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">0.0</span></div>
-              <div class="pr-slider" data-param="vig-feather"><span class="pr-slider__label">Feather</span><div class="pr-slider-track"><div class="pr-slider-thumb" style="left:50%"></div></div><span class="pr-slider__val">50.0</span></div>
-            </div>
-          </div>
-          <!-- LUT -->
-          <div class="pr-lumetri__group">
-            <div class="pr-lumetri__title" data-collapse="lum-lut">Creative LUT &#9654;</div>
-            <div class="pr-lumetri__body pr-lumetri__body--collapsed" id="lum-lut">
-              <select class="pr-lut-select" id="prLutSelect">
-                <option>None</option>
-                <option>SL Clean Fuji</option>
-                <option>SL Clean Kodak</option>
-                <option>SL Melancholic Tone</option>
-                <option>SL Vintage Warmth</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Essential Graphics -->
-      <div class="pr-sidebar-section" id="prGraphicsSection">
-        <div class="pr-sidebar-section__head">Essential Graphics <span style="color:var(--pr-accent)">·</span></div>
-        <div class="pr-graphics" id="prGraphics">
-          <div class="pr-graphics-tpl" data-tpl="lower-third"><div class="pr-graphics-thumb" style="color:var(--pr-accent)">Lower Third</div><div class="pr-graphics-info">Responsive title card</div></div>
-          <div class="pr-graphics-tpl" data-tpl="title"><div class="pr-graphics-thumb" style="color:#ffbd2e">Title Card</div><div class="pr-graphics-info">Full-screen intro</div></div>
-          <div class="pr-graphics-tpl" data-tpl="credits"><div class="pr-graphics-thumb" style="color:#7ab87a">Credits</div><div class="pr-graphics-info">Scrolling end credits</div></div>
-          <div class="pr-graphics-tpl" data-tpl="callout"><div class="pr-graphics-thumb" style="color:#d4a03c">Callout</div><div class="pr-graphics-info">Animated callout line</div></div>
-          <div class="pr-graphics-tpl" data-tpl="countdown"><div class="pr-graphics-thumb" style="color:#ff5f57">Countdown</div><div class="pr-graphics-info">3-2-1 countdown leader</div></div>
-          <div class="pr-graphics-controls">
-            <div class="pr-graphics-field"><label>Font</label><select class="pr-graphics-select"><option>Space Grotesk</option><option>Bebas Neue</option><option>IBM Plex Mono</option></select></div>
-            <div class="pr-graphics-field"><label>Size</label><input type="range" min="12" max="200" value="48" class="pr-graphics-range" /></div>
-            <div class="pr-graphics-field"><label>Color</label><input type="color" value="#ffffff" class="pr-graphics-color" /></div>
-            <div class="pr-graphics-field"><label>Text</label><input type="text" value="Just Hemang" class="pr-graphics-text" id="prGraphicsText" /></div>
-            <div class="pr-graphics-align">
-              <span class="pr-graphics-align-btn" data-align="left">&#8676;</span>
-              <span class="pr-graphics-align-btn" data-align="center">&#8596;</span>
-              <span class="pr-graphics-align-btn" data-align="right">&#8677;</span>
-            </div>
-          </div>
-        </div>
+  <footer class="footer">
+    <img class="footer__logo" src="Logo Transparent.png" alt="Just Hemang" />
+    <div class="footer__row">
+      <div class="footer__links">
+        <a href="mailto:justhemang@gmail.com">Email</a>
+        <a href="https://github.com/justhemang" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/hemang-luthra-328a65303/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.instagram.com/justhemang6/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://youtube.com/@JustHemang" target="_blank" rel="noopener">YouTube</a>
       </div>
     </div>
-
-  </div><!-- /pr-container -->
-
-  <!-- ═══ BOTTOM PANEL ═══ -->
-  <div class="pr-bottom" id="prBottom">
-    <div class="pr-tabs">
-      <button class="pr-tab pr-tab--active" data-tab="timeline">Timeline</button>
-      <button class="pr-tab" data-tab="effects">Effects</button>
-      <button class="pr-tab" data-tab="mixer">Audio Mixer</button>
-      <button class="pr-tab" data-tab="markers">Markers</button>
-      <button class="pr-tab" data-tab="history">History</button>
-      <button class="pr-tab" data-tab="export">Export</button>
-      <div class="pr-tabs__spacer"></div>
-      <span class="pr-tabs__seq">Sequence: <strong>Master_Sequence</strong></span>
-    </div>
-
-    <!-- ── Timeline Panel ── -->
-    <div class="pr-panel pr-panel--active" id="panel-timeline">
-      <div class="pr-timeline">
-        <div class="pr-timeline__ruler" id="prRuler">
-          <div class="pr-timeline__ruler-bg"></div>
-          <div class="pr-timeline__playhead" id="prPlayhead">
-            <div class="pr-playhead__head"></div>
-            <div class="pr-playhead__line"></div>
-          </div>
-        </div>
-        <div class="pr-timeline__body">
-          <div class="pr-timeline__headers">
-            <div class="pr-th"><span class="pr-th__name">V3</span><button class="pr-th__btn pr-th__btn--eye" title="Toggle Track Output">&#9673;</button><button class="pr-th__btn" title="Toggle Lock">&#9670;</button></div>
-            <div class="pr-th"><span class="pr-th__name">V2</span><button class="pr-th__btn pr-th__btn--eye" title="Toggle Track Output">&#9673;</button><button class="pr-th__btn" title="Toggle Lock">&#9670;</button></div>
-            <div class="pr-th"><span class="pr-th__name">V1</span><button class="pr-th__btn pr-th__btn--eye" title="Toggle Track Output">&#9673;</button><button class="pr-th__btn" title="Toggle Lock">&#9670;</button></div>
-            <div class="pr-th"><span class="pr-th__name">A1</span><button class="pr-th__btn pr-th__btn--mute" title="Mute Track">M</button><button class="pr-th__btn pr-th__btn--solo" title="Solo Track">S</button></div>
-            <div class="pr-th"><span class="pr-th__name">A2</span><button class="pr-th__btn pr-th__btn--mute" title="Mute Track">M</button><button class="pr-th__btn pr-th__btn--solo" title="Solo Track">S</button></div>
-            <div class="pr-th"><span class="pr-th__name">A3</span><button class="pr-th__btn pr-th__btn--mute" title="Mute Track">M</button><button class="pr-th__btn pr-th__btn--solo" title="Solo Track">S</button></div>
-            <div class="pr-th"><span class="pr-th__name">T1</span></div>
-          </div>
-          <div class="pr-timeline__tracks">
-            <div class="pr-track"><div class="pr-clip pr-clip--v2" style="left:40%;width:15%"><span class="pr-clip__kf"></span>Title Card</div></div>
-            <div class="pr-track"><div class="pr-clip pr-clip--v2" style="left:18%;width:34%"><span class="pr-clip__kf"></span>Title Overlay</div></div>
-            <div class="pr-track"><div class="pr-clip pr-clip--v1" style="left:2%;width:58%"><span class="pr-clip__kf"></span>justhemang.vercel.app</div><div class="pr-clip pr-clip--v1b" style="left:64%;width:22%"><span class="pr-clip__kf"></span>about_page.mp4</div></div>
-            <div class="pr-track"><div class="pr-clip pr-clip--a1" style="left:2%;width:62%">bgm_track.wav</div></div>
-            <div class="pr-track"><div class="pr-clip pr-clip--a2" style="left:42%;width:24%">sfx_pack.wav</div></div>
-            <div class="pr-track"><div class="pr-clip pr-clip--a2" style="left:10%;width:15%">narration.wav</div></div>
-            <div class="pr-track"><div class="pr-clip pr-clip--t1" style="left:14%;width:28%">Just Hemang</div></div>
-          </div>
-        </div>
-        <div class="pr-timeline__status">
-          <span>In: <strong>00:00:00:00</strong></span>
-          <span>Out: <strong>00:00:24:00</strong></span>
-          <span>Duration: <strong>00:00:24:00</strong></span>
-          <label class="pr-timeline__zoom-label">Zoom <input type="range" min="1" max="10" value="5" class="pr-timeline__zoom" id="prZoom" /></label>
-          <span class="pr-timeline__status-right">24.00 fps &nbsp;|&nbsp; 1920x1080</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Effects Panel ── -->
-    <div class="pr-panel" id="panel-effects">
-      <div class="pr-effects">
-        <div class="pr-effects__sidebar">
-          <div class="pr-effects__search"><input type="text" placeholder="Search Effects..." class="pr-effects__input" id="prEffectsSearch" /></div>
-          <div class="pr-effects__tree" id="prEffectsTree">
-            <div class="pr-tree-folder pr-tree-folder--open"><span class="pr-tree-folder__arrow">&#9660;</span> Presets</div>
-            <div class="pr-tree-folder" data-folder="audio-fx"><span class="pr-tree-folder__arrow">&#9654;</span> Audio Effects</div>
-            <div class="pr-tree-folder" data-folder="audio-trans"><span class="pr-tree-folder__arrow">&#9654;</span> Audio Transitions</div>
-            <div class="pr-tree-folder pr-tree-folder--open" data-folder="video-fx"><span class="pr-tree-folder__arrow">&#9660;</span> Video Effects
-              <div class="pr-tree-item pr-tree-item--active">Lumetri Color</div>
-              <div class="pr-tree-item">Gaussian Blur</div>
-              <div class="pr-tree-item">Transform</div>
-              <div class="pr-tree-item">Crop</div>
-              <div class="pr-tree-item">Directional Blur</div>
-              <div class="pr-tree-item">Fast Blur</div>
-              <div class="pr-tree-item">Unsharp Mask</div>
-              <div class="pr-tree-item">Levels</div>
-              <div class="pr-tree-item">Brightness & Contrast</div>
-            </div>
-            <div class="pr-tree-folder" data-folder="video-trans"><span class="pr-tree-folder__arrow">&#9654;</span> Video Transitions
-              <div class="pr-tree-item">Cross Dissolve</div>
-              <div class="pr-tree-item">Dip to Black</div>
-              <div class="pr-tree-item">Dip to White</div>
-              <div class="pr-tree-item">Film Dissolve</div>
-            </div>
-          </div>
-        </div>
-        <div class="pr-effects__controls">
-          <div class="pr-effects__header">Effect Controls &mdash; <span>justhemang.vercel.app</span></div>
-          <div class="pr-effects__body">
-            <div class="pr-egroup">
-              <div class="pr-egroup__title">Motion</div>
-              <div class="pr-erow"><span class="pr-erow__label">Position</span><span class="pr-erow__val">960.0 &nbsp; 540.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Scale</span><span class="pr-erow__val">100.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Rotation</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Anchor Point</span><span class="pr-erow__val">960.0 &nbsp; 540.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Anti-flicker Filter</span><span class="pr-erow__val">0.00</span><span class="pr-erow__reset">&#8634;</span></div>
-            </div>
-            <div class="pr-egroup">
-              <div class="pr-egroup__title">Opacity</div>
-              <div class="pr-erow"><span class="pr-erow__label">Opacity</span><span class="pr-erow__val">100.0 %</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Blend Mode</span><span class="pr-erow__val">Normal</span><span class="pr-erow__reset">&#8634;</span></div>
-            </div>
-            <div class="pr-egroup">
-              <div class="pr-egroup__title">Time Remapping</div>
-              <div class="pr-erow"><span class="pr-erow__label">Speed</span><span class="pr-erow__val">100.0 %</span><span class="pr-erow__reset">&#8634;</span></div>
-            </div>
-            <div class="pr-egroup">
-              <div class="pr-egroup__title">Lumetri Color</div>
-              <div class="pr-erow"><span class="pr-erow__label">Temperature</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Tint</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Exposure</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Contrast</span><span class="pr-erow__val">0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Highlights</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Shadows</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Whites</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Blacks</span><span class="pr-erow__val">0.0</span><span class="pr-erow__reset">&#8634;</span></div>
-              <div class="pr-erow"><span class="pr-erow__label">Saturation</span><span class="pr-erow__val">100.0</span><span class="pr-erow__reset">&#8634;</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Audio Mixer Panel ── -->
-    <div class="pr-panel" id="panel-mixer">
-      <div class="pr-mixer" id="prMixer">
-        <div class="pr-fader-strip"><span class="pr-fader-strip__label">Master</span><div class="pr-fader-vu"><div class="pr-fader-vu-fill" style="height:35%"></div></div><div class="pr-fader-track"><div class="pr-fader-thumb" style="bottom:70%"></div></div><span class="pr-fader-db">0.0 dB</span></div>
-        <div class="pr-fader-strip"><span class="pr-fader-strip__label">A1</span><div class="pr-fader-vu"><div class="pr-fader-vu-fill" style="height:45%"></div></div><div class="pr-fader-track"><div class="pr-fader-thumb" style="bottom:80%"></div></div><span class="pr-fader-db">-3.2 dB</span></div>
-        <div class="pr-fader-strip"><span class="pr-fader-strip__label">A2</span><div class="pr-fader-vu"><div class="pr-fader-vu-fill" style="height:20%"></div></div><div class="pr-fader-track"><div class="pr-fader-thumb" style="bottom:55%"></div></div><span class="pr-fader-db">-8.0 dB</span></div>
-        <div class="pr-fader-strip"><span class="pr-fader-strip__label">A3</span><div class="pr-fader-vu"><div class="pr-fader-vu-fill" style="height:60%"></div></div><div class="pr-fader-track"><div class="pr-fader-thumb" style="bottom:90%"></div></div><span class="pr-fader-db">+1.5 dB</span></div>
-      </div>
-    </div>
-
-    <!-- ── Markers Panel ── -->
-    <div class="pr-panel" id="panel-markers">
-      <div class="pr-markers" id="prMarkers">
-        <div class="pr-markers__header"><span>Markers</span><span style="color:var(--pr-accent)">04</span></div>
-        <div class="pr-markers__list">
-          <div class="pr-marker" data-time="00:00:02:00" style="border-left:3px solid #28c840"><span class="pr-marker__tc">00:00:02:00</span><span class="pr-marker__note">Intro fade in</span></div>
-          <div class="pr-marker" data-time="00:00:08:12" style="border-left:3px solid #ffbd2e"><span class="pr-marker__tc">00:00:08:12</span><span class="pr-marker__note">Main content start</span></div>
-          <div class="pr-marker" data-time="00:00:15:00" style="border-left:3px solid #5fb8b8"><span class="pr-marker__tc">00:00:15:00</span><span class="pr-marker__note">Color grade begins</span></div>
-          <div class="pr-marker" data-time="00:00:22:08" style="border-left:3px solid #ff5f57"><span class="pr-marker__tc">00:00:22:08</span><span class="pr-marker__note">Outro / CTA</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── History Panel ── -->
-    <div class="pr-panel" id="panel-history">
-      <div class="pr-history" id="prHistory">
-        <div class="pr-markers__header"><span>History</span></div>
-        <div class="pr-history-list">
-          <div class="pr-history-item pr-history-item--active">New Sequence</div>
-          <div class="pr-history-item">Import media</div>
-          <div class="pr-history-item">Add to timeline</div>
-          <div class="pr-history-item">Ripple trim</div>
-          <div class="pr-history-item">Apply Lumetri Color</div>
-          <div class="pr-history-item">Adjust temperature</div>
-          <div class="pr-history-item">Add title overlay</div>
-          <div class="pr-history-item">Nest sequence</div>
-          <div class="pr-history-item">Add audio crossfade</div>
-          <div class="pr-history-item">Speed change 120%</div>
-          <div class="pr-history-item">Add marker</div>
-          <div class="pr-history-item">Keyframe opacity</div>
-          <div class="pr-history-item">Crop 10%</div>
-          <div class="pr-history-item">Add Gaussian Blur</div>
-          <div class="pr-history-item">Export settings</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Export Panel ── -->
-    <div class="pr-panel" id="panel-export">
-      <div class="pr-export">
-        <div class="pr-export__left">
-          <div class="pr-export__header">Export Settings</div>
-          <div class="pr-export__preview"><div class="pr-export__screen">Hemang_Luthra_Portfolio.mp4</div></div>
-          <div class="pr-export__rows">
-            <div class="pr-export__row"><span>Format</span><span class="pr-export__val">H.264</span></div>
-            <div class="pr-export__row"><span>Preset</span><span class="pr-export__val">High Quality 1080p HD</span></div>
-            <div class="pr-export__row"><span>Output Name</span><span class="pr-export__val pr-export__val--link">Hemang_Luthra_Portfolio.mp4</span></div>
-          </div>
-        </div>
-        <div class="pr-export__right">
-          <div class="pr-export__header">Basic Video</div>
-          <div class="pr-export__rows">
-            <div class="pr-export__row"><span>Resolution</span><span class="pr-export__val">1920 x 1080</span></div>
-            <div class="pr-export__row"><span>Frame Rate</span><span class="pr-export__val">24 fps</span></div>
-            <div class="pr-export__row"><span>Field Order</span><span class="pr-export__val">Progressive</span></div>
-            <div class="pr-export__row"><span>Aspect</span><span class="pr-export__val">Square Pixels (1.0)</span></div>
-            <div class="pr-export__row"><span>Profile</span><span class="pr-export__val">High</span></div>
-            <div class="pr-export__row"><span>Level</span><span class="pr-export__val">4.2</span></div>
-          </div>
-          <div class="pr-export__header">Bitrate Settings</div>
-          <div class="pr-export__rows">
-            <div class="pr-export__row"><span>Encoding</span><span class="pr-export__val">VBR, 2 pass</span></div>
-            <div class="pr-export__row"><span>Target Bitrate</span><span class="pr-export__val">16 Mbps</span></div>
-            <div class="pr-export__row"><span>Maximum Bitrate</span><span class="pr-export__val">20 Mbps</span></div>
-          </div>
-          <div class="pr-export__header">Audio</div>
-          <div class="pr-export__rows">
-            <div class="pr-export__row"><span>Audio Codec</span><span class="pr-export__val">AAC</span></div>
-            <div class="pr-export__row"><span>Sample Rate</span><span class="pr-export__val">48000 Hz</span></div>
-            <div class="pr-export__row"><span>Channels</span><span class="pr-export__val">Stereo</span></div>
-            <div class="pr-export__row"><span>Audio Bitrate</span><span class="pr-export__val">320 kbps</span></div>
-          </div>
-          <div class="pr-export__buttons">
-            <button class="pr-export__btn pr-export__btn--queue">Queue</button>
-            <button class="pr-export__btn pr-export__btn--export">Export</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pr-bottom__timecode"><span id="prTimecode">00:00:00:00</span></div>
-  </div>
+    <p class="footer__copy mono">&copy; 2026 Just Hemang. All rights reserved.</p>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/premiere-loader.js"></script>
 </body>
 </html>
