@@ -289,6 +289,7 @@ body.has-cursor .cursor{display:block}
 .pricing__features{list-style:none}
 .pricing__features li{font-family:var(--font-mono);font-size:.72rem;line-height:2;color:var(--ink-2);padding-left:1.1rem;position:relative}
 .pricing__features li::before{content:'+';position:absolute;left:0;color:var(--teal);font-weight:700}
+.pricing__btn{margin-top:1.2rem;display:inline-flex}
 
 /* process */
 .process{padding:var(--section-gap) var(--pad);max-width:900px;margin:0 auto}
